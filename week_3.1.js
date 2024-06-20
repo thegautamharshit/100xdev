@@ -125,3 +125,5 @@ app.get("/heart-check",userMiddleware,kidneyMiddleware,function(req,res){
     res.send("your heart is healthy");
 })
 
+app.listen(3000);
+
