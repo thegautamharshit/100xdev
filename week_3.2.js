@@ -212,11 +212,11 @@
 
 //-----------------TRY - CATCH --------------------------------
 
-try{
-    let a;
-    console.log(a.length);
-}catch(e){
-    console.log(`Error is ${e}`);
-}
+// try{
+//     let a;
+//     console.log(a.length);
+// }catch(e){
+//     console.log(`Error is ${e}`);
+// }
 
-console.log("Control reached final statement");
+// console.log("Control reached final statement");
