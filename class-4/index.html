@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>Calculator</title>
+    </head>
+    <body>
+        <input oninput="debouncePopulateDiv()" id="firstnum" type="text" placeholder="First number"></input>
+        <br><br>
+        <input oninput="debouncePopulateDiv()" id="secondnum" type="text" placeholder="Second number"></input>
+        <br><br>
+        <!-- <button onclick="populateDiv()">Calculate Sum</button> -->
+        <div id="finalsum"></div>
+    </body>
+    <script>
+        let timeout;
+        function debouncePopulateDiv(){
+            //delay the call to populateDiv until not been called for 100 ms(for testing 1 sec)
+            clearTimeout(timeout);
+            timeout = setTimeout(function(){
+                populateDiv()
+            },1000);
+        }vscode
+
+        function populateDiv(){
+            const a = document.getElementById("firstnum").value;
+            const b = document.getElementById("secondnum").value;
+            // const ans = document.getElementById("finalsum")
+            // ans.innerHTML = parseInt(a) + parseInt(b);
+            fetch("https://sum-server.100xdevs.com/sum?a=" + a +"&b="+ b)
+                .then(function(response){
+                    // console.log(response); // for printing the data in console
+                    response.text()
+                        .then(function(ans){
+                            // console.log(ans);
+                            document.getElementById("finalsum").innerHTML = ans;
+                        })
+                });
+
+        }
+        //another way to do the same thing with async funtion 
+        async function populateDiv2(){
+            const a = document.getElementById("firstnum").value;
+            const b = document.getElementById("secondnum").value;
+
+            const response = await fetch("https://sum-server.100xdevs.com/sum?a=" + a +"&b="+ b)
+            const ans = await response.text();
+            document.getElementById("finalsum").innerHTML = ans;
+        }
+    </script>
+</html>

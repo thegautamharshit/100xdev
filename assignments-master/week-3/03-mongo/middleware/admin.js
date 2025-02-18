@@ -1,5 +1,4 @@
-const { Admin } = require("../db");
-
+const {Admin} = require("../db");
 // Middleware for handling auth
 function adminMiddleware(req, res, next) {
     // Implement admin auth logic
@@ -8,15 +7,15 @@ function adminMiddleware(req, res, next) {
     const password = req.headers.password;
 
     Admin.findOne({
-        username: username,
-        password: password,
+        username,
+        password
     })
-    .then(function(value){
+    .then((value)=>{
         if(value){
             next();
         }else{
             res.status(403).json({
-                msg: "Admin doesn't exist"
+                msg: "Admin Doesn't Exist"
             })
         }
     })

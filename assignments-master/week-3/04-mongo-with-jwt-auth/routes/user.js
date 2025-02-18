@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const router = Router();
 const userMiddleware = require("../middleware/user");
+const jwt = require("jsonwebtoken");
 
 // User Routes
 router.post('/signup', (req, res) => {
@@ -17,6 +18,9 @@ router.get('/courses', (req, res) => {
 
 router.post('/courses/:courseId', userMiddleware, (req, res) => {
     // Implement course purchase logic
+    const username = req.username;
+    console.log(username);
+
 });
 
 router.get('/purchasedCourses', userMiddleware, (req, res) => {

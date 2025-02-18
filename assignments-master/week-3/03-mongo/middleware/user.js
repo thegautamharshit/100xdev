@@ -1,4 +1,4 @@
-const { User } = require("../db");
+const {User} = require("../db");
 
 function userMiddleware(req, res, next) {
     // Implement user auth logic
@@ -8,14 +8,14 @@ function userMiddleware(req, res, next) {
 
     User.findOne({
         username: username,
-        password: password,
+        password: password
     })
-    .then(function(value){
+    .then((value)=>{
         if(value){
             next();
         }else{
             res.status(403).json({
-                msg: "User doesn't exist"
+                message: "User Doesn't Exist"
             })
         }
     })

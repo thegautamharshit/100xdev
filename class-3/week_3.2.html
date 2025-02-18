@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf8">
+        <meta name="viewport" content="width=device-width">
+        <title></title>
+    </head>
+    <body>
+        <div></div>
+        <div id="container"></div>
+        <button onclick="getAnimalData()">Get Animal Data</button>
+        <script>
+            function getAnimalData(){
+                fetch("https://fakerapi.it/api/v1/persons")
+                    .then(function(response){
+                        response.json()
+                            .then(function(finalData){
+                                document.getElementById("container").innerHTML = JSON.stringify(finalData.data);
+                            })
+                    })
+                
+            }
+            // ANOTHER WAY OF DOING SAME THING USING ASYNC AWAIT
+
+            // async function getAnimalData(){
+            //     const response = await fetch("https://fakerapi.it/api/v1/persons");
+            //     const finalData = await response.json()
+            //     console.log(finalData);
+            // }
+
+        </script>
+    </body>
+</html>
+
+
+<!-- -----------------------------CHATGPT CORRECTED FORMAT------------------------ -->
+
+<!-- <!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Animal Data Fetcher</title>
+    </head>
+    <body>
+        <div></div>
+        <div id="container"></div>
+        <button onclick="getAnimalData()">Get Animal Data</button>
+        <script>
+            function getAnimalData(){
+                fetch("https://fakerapi.it/api/v1/persons")
+                    .then(function(response){
+                        return response.json();
+                    })
+                    .then(function(finalData){
+                        console.log(finalData);
+                        document.getElementById("container").innerHTML = JSON.stringify(finalData.data, null, 2);
+                    })
+                    .catch(function(error){
+                        console.error("Error fetching data:", error);
+                    });
+            }
+
+            // ANOTHER WAY OF DOING THE SAME THING USING ASYNC AWAIT
+
+            // async function getAnimalData(){
+            //     try {
+            //         const response = await fetch("https://fakerapi.it/api/v1/persons");
+            //         const finalData = await response.json();
+            //         console.log(finalData);
+            //         document.getElementById("container").innerHTML = JSON.stringify(finalData.data, null, 2);
+            //     } catch (error) {
+            //         console.error("Error fetching data:", error);
+            //     }
+            // }
+        </script>
+    </body>
+</html> -->
+
+
