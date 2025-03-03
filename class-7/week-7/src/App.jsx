@@ -104,47 +104,101 @@
 
 
 //--------------------------------------------------------------------------
+//============-------------npm install react@18 react-dom@18 --------------
 
-import './App.css'
+
+// import './App.css'
+// import React from 'react';
+// import { useMemo } from 'react';
+// import { RecoilRoot, useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
+// import { countAtom, evenSelector } from '../store/atoms/count';
+
+// function App() {
+//   return (
+//     <div>
+//       <RecoilRoot>
+//         <Count />
+//       </RecoilRoot>
+//     </div>
+//   )
+// }
+
+// function Count(){
+//   return <div>
+//     <CountRender />
+//     <Button />
+//   </div>
+// }
+
+// function CountRender(){
+//   const count = useRecoilValue(countAtom);
+//   return <div>
+//     <h1>Count: {count}</h1>
+//     <EveOdd />
+//     <EvenCountRendered />
+//   </div>
+// }
+
+// function EveOdd(){
+//   const count = useRecoilValue(countAtom);
+//   const isEven = useMemo(()=> {
+//     return count%2===0
+//   },[count])
+
+//   return <div>
+//     <h1>{isEven ? "It is Even" : "It is Odd"}</h1>
+//   </div>
+// }
+
+// function EvenCountRendered(){
+//   const eve = useRecoilValue(evenSelector);
+
+//   return <div>
+//     <div
+//       style={{
+//         width: '50px',         // Width of the circle
+//         height: '50px',        // Height of the circle
+//         backgroundColor: eve ? "green" : "red", // Color based on even/odd
+//         borderRadius: '50%',   // Makes the div circular
+//         margin: '20px auto',   // Centers the circle horizontally
+//       }}
+//     ></div>    
+//   </div>
+// }
+
+// function Button(){
+//   // const [count, setCount] = useRecoilState(countAtom);
+//   const setCount = useSetRecoilState(countAtom); // This will stop the re-rendering of the button component
+//   return <div>
+//     <button onClick={()=>{
+//       setCount(count=>count-1)
+//     }}>Decrease</button>
+
+//     <button onClick={()=>{
+//       setCount(count=>count+1)
+//     }}>Increase</button>
+
+//   </div>
+// }
+
+// export default App;
+
+//----------------------TO DO APP--------------------------
+
+import './App.css';
 import React from 'react';
-import { RecoilRoot, useRecoilValue, useRecoilState } from 'recoil';
-import { countAtom } from '../store/atoms/count';
+import { RecoilRoot } from 'recoil';
+import TodoList from '../components/TodoList'; // Adjust the path as needed
 
 function App() {
   return (
-    <div>
-      <RecoilRoot>
-        <Count />
-      </RecoilRoot>
-    </div>
-  )
-}
-
-function Count(){
-  return <div>
-    <CountRender />
-    <Button />
-  </div>
-}
-
-function CountRender(){
-  const count = useRecoilValue(countAtom);
-  return <div>
-    <h1>Count: {count}</h1>
-  </div>
-}
-
-function Button(){
-  const [count, setCount] = useRecoilState(countAtom);
-  return <div>
-    <button onClick={()=>{
-      setCount(count+1)
-    }}>Increase</button>
-
-    <button onClick={()=>{
-      setCount(count-1)
-    }}>Decrease</button>
-  </div>
+    <RecoilRoot>
+      <div style={{ padding: '20px', fontFamily: 'Arial, sans-serif' }}>
+        <h1>Todo List</h1>
+        <TodoList />
+      </div>
+    </RecoilRoot>
+  );
 }
 
 export default App;
